@@ -1,19 +1,17 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[project]
-name = "ipyblender_experimental"
+[tool.poetry]
+name = "ipy-blender"
 version = "0.0.4"
 readme = "README.md"
+description = "Messing around with ipykernel, blender & sat imagery"
+authors = ["Maxime Lenormand, <maxime@overstory.com>"]
 
-requires-python = "~=3.10.0"
-dependencies = [
-    "anywidget",
-    "watchfiles",
-    "ipykernel",
-    "bpy",
-]
+[tool.poetry.dependencies]
+python = "~=3.10.0"
+bpy = "^3.6.0"
+anywidget = "~0.6"
+watchfiles = "~0.20"
+ipykernel = "~6.25"
+
 
 [tool.hatch.build]
 artifacts = ["src/ipyblender_experimental/static/*"]
@@ -23,3 +21,7 @@ build-function = "hatch_jupyter_builder.npm_builder"
 ensured-targets = ["src/ipyblender_experimental/static/widget.js"]
 skip-if-exists = ["src/ipyblender_experimental/static/widget.js"]
 dependencies = ["hatch-jupyter-builder>=0.5.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
